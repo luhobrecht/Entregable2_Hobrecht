@@ -3,12 +3,21 @@
     height: 8vh;
 }
 
-.dropdown-item:hover {
-    background-color: #F8EDFD
+.nav-pills {
+  color: #393939;
 }
 
-.dropdown-item.active {
-    background-color: #8C52FF
+.nav-link {
+  color: #393939
+}
+
+.nav-link.active {
+  color: #393939;
+  background-color: #8C52FF !important;
+}
+
+.nav-link:hover {
+  color: #8C52FF
 }
 
 #timerDisplay {
@@ -58,8 +67,6 @@ li {
 }
 
 #taskList {
-    position: relative;
-    right: 260px;
     margin-top: 2rem;
     font-size: 20px;
 }
@@ -68,10 +75,6 @@ li {
     margin-top: 2rem;
     display: flex;
     flex-direction: column;
-}
-
-#workedHours {
-
 }
 
 .timer_title {
