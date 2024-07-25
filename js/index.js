@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const taskList = document.getElementById('taskList');
     const reminderList = document.getElementById('reminderList');
     const timerDisplay = document.getElementById('timerDisplay');
-    const workedHours = document.getElementById('workedHours')
+    const workedHours = document.getElementById('workedHours');
     let timerInterval;
     let isRunning = false;
     let startCounter = 0;
@@ -11,26 +11,31 @@ document.addEventListener('DOMContentLoaded', function () {
     // Cargar datos desde localStorage al iniciar
     loadFromLocalStorage();
 
+    // Función para mostrar alerta
+    function showAlert(message) {
+        alert(message);
+    }
+
     // Event listener para agregar tarea
     document.getElementById('addTask').addEventListener('click', function () {
         const taskInput = document.getElementById('taskInput');
         const taskText = taskInput.value.trim();
-        console.log(taskText)
         if (taskText !== '') {
             const li = document.createElement('li');
             const checkbox = document.createElement('input');
             checkbox.type = 'checkbox';
-            checkbox.classList = 'form-check-input'
+            checkbox.classList = 'form-check-input';
             checkbox.addEventListener('change', function () {
                 li.classList.toggle('completed');
                 saveToLocalStorage();
             });
             li.appendChild(checkbox);
-            li.classList = 'taskLi'
+            li.classList = 'taskLi';
             li.appendChild(document.createTextNode(taskText));
             taskList.appendChild(li);
             taskInput.value = '';
             saveToLocalStorage();
+            showAlert('Tarea agregada correctamente');
         }
     });
 
@@ -45,10 +50,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 li.classList.toggle('completed');
                 saveToLocalStorage();
             });
-            li.classList = 'reminderLi btn btn-dark mb-2'
+            li.classList = 'reminderLi btn btn-dark mb-2';
             reminderList.appendChild(li);
             reminderInput.value = '';
             saveToLocalStorage();
+            showAlert('Recordatorio agregado correctamente');
         }
     });
 
@@ -119,13 +125,13 @@ document.addEventListener('DOMContentLoaded', function () {
             const li = document.createElement('li');
             const checkbox = document.createElement('input');
             checkbox.type = 'checkbox';
-            checkbox.classList = 'form-check-input'
+            checkbox.classList = 'form-check-input';
             checkbox.addEventListener('change', function () {
                 li.classList.toggle('completed');
                 saveToLocalStorage();
             });
             li.appendChild(checkbox);
-            li.classList = 'taskLi'
+            li.classList = 'taskLi';
             li.appendChild(document.createTextNode(taskText));
             taskList.appendChild(li);
             taskInput.value = '';
@@ -133,6 +139,7 @@ document.addEventListener('DOMContentLoaded', function () {
             const taskModal = bootstrap.Modal.getInstance(document.getElementById('taskModal'));
             taskModal.hide();
             saveToLocalStorage();
+            showAlert('Tarea agregada correctamente');
         }
     });
 
@@ -147,13 +154,14 @@ document.addEventListener('DOMContentLoaded', function () {
                 li.classList.toggle('completed');
                 saveToLocalStorage();
             });
-            li.classList = 'reminderLi btn btn-dark mb-2'
+            li.classList = 'reminderLi btn btn-dark mb-2';
             reminderList.appendChild(li);
             reminderInput.value = '';
             // Cerrar el modal
             const reminderModal = bootstrap.Modal.getInstance(document.getElementById('reminderModal'));
             reminderModal.hide();
             saveToLocalStorage();
+            showAlert('Recordatorio agregado correctamente');
         }
     });
 
@@ -185,25 +193,25 @@ document.addEventListener('DOMContentLoaded', function () {
     function loadFromLocalStorage() {
         const data = JSON.parse(localStorage.getItem('tasklyData'));
         if (data) {
-            data.tasks.forEach(task => {
+            for (const task of data.tasks) {
                 const li = document.createElement('li');
                 const checkbox = document.createElement('input');
                 checkbox.type = 'checkbox';
-                checkbox.classList = 'form-check-input'
+                checkbox.classList = 'form-check-input';
                 checkbox.checked = task.completed;
                 checkbox.addEventListener('change', function () {
                     li.classList.toggle('completed');
                     saveToLocalStorage();
                 });
                 li.appendChild(checkbox);
-                li.classList = 'taskLi'
+                li.classList = 'taskLi';
                 li.appendChild(document.createTextNode(task.text));
                 if (task.completed) {
                     li.classList.add('completed');
                 }
                 taskList.appendChild(li);
-            });
-            data.reminders.forEach(reminder => {
+            }
+            for (const reminder of data.reminders) {
                 const li = document.createElement('li');
                 li.appendChild(document.createTextNode(reminder.text));
                 li.addEventListener('click', function () {
@@ -215,12 +223,12 @@ document.addEventListener('DOMContentLoaded', function () {
                     li.classList.add('completed');
                 }
                 reminderList.appendChild(li);
-            });
-            data.workedHours.forEach(workedHour => {
+            }
+            for (const workedHour of data.workedHours) {
                 const li = document.createElement('li');
                 li.textContent = workedHour;
                 workedHours.appendChild(li);
-            });
+            }
         }
     }
 });
