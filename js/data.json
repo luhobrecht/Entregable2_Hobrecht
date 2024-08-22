@@ -1,0 +1,13 @@
+{
+    "tasks": [
+      {"text": "Completar informe", "completed": false, "date": "2024-08-22"},
+      {"text": "Llamar al cliente", "completed": true, "date": "2024-08-22"}
+    ],
+    "reminders": [
+      {"text": "Reunión a las 10:00 AM", "completed": false, "date": "2024-08-22"}
+    ],
+    "workedHours": [
+      "Terminado a las 09:30:00 - Tiempo trabajado: 00:45:00"
+    ]
+  }
+  
