@@ -29,7 +29,7 @@ function mergeData(localData, jsonData) {
     };
 }
 
-// Función para mostrar alertas utilizando SweetAlert2
+// Función para mostrar alertas 
 function showAlert(message, type = 'success') {
     Swal.fire({
         icon: type,

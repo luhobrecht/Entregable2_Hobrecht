@@ -8,8 +8,8 @@ Taskly es un simulador interactivo desarrollado para gestionar tareas y recordat
 
 El proyecto está organizado de la siguiente manera:
 
-- **index.html**: Documento principal HTML que estructura la interfaz gráfica de la aplicación.
-- **css/style.css**: Archivo CSS que define los estilos personalizados de la aplicación, incluyendo la integración con Bootstrap.
+- **index.html**: Documento principal HTML.
+- **css/style.css**: Archivo CSS que define los estilos de la aplicación, incluyendo la integración con Bootstrap.
 - **js/app.js**: Archivo JavaScript principal que maneja la lógica de la aplicación, como el manejo de eventos y la interacción con el DOM.
 - **js/storage.js**: Archivo JavaScript que maneja las operaciones relacionadas con `localStorage` y la carga de datos desde el archivo JSON.
 - **js/data.json**: Archivo JSON que simula la base de datos de tareas, recordatorios y horas trabajadas.

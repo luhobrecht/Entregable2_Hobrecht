@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         startNewTimer();
     });
 
-    // Funciones de renderizado
+    // Funciones de renderizado de tareas, recordatorios y horas trabajadas
     function renderTasks(tasks) {
         taskList.innerHTML = '';
         tasks.forEach(task => {
@@ -124,6 +124,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
     }
 
+    // Recordatorios
     function addReminder() {
         const reminderInput = document.getElementById('reminderInput');
         const reminderDateInput = document.getElementById('reminderDate');
@@ -143,6 +144,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
     }
 
+    // Temporizador
     function toggleTimer() {
         if (isRunning) {
             clearInterval(timerInterval);
@@ -202,6 +204,7 @@ document.addEventListener('DOMContentLoaded', async function () {
         });
     }
 
+    // Inicializar calendario
     function initializeCalendar(tasks, reminders) {
         const calendarEl = document.getElementById('calendar');
 
